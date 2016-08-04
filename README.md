@@ -285,6 +285,14 @@ OpenSSL的开发者在库里内置了测性能的套件，通过speed命令选�
 	-----BEGIN CERTIFICATE-----
 	...
 	-----END CERTIFICATE-----
+
+证书部分包含公钥。
+
+	openssl x509 -in mycert.pem -pubkey -noout
+	-----BEGIN PUBLIC KEY-----
+	...
+	-----END PUBLIC KEY-----
+	
 使用这个指令后，会要求你回答一系列的问题：国家，省市，公司，职位等等。当回答“Common Name”这个问题要注意点，你可能会填写主机名或域名，如果服务器的真实地址是mybox.mydomain.com，但用户是通过www.mydomain.com来访问的，那么你应填写用户访问的地址。  
 可以通过-subj选项来直接写入这些回答，对生成证书来说惟一有用的就是Common Name(CN)字段。
 
