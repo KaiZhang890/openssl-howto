@@ -4,8 +4,8 @@ OpenSSL使用文档
 [OpenSSL Command-Line HOWTO by Paul Heinlein](https://www.madboa.com/geek/openssl/)  
 ![Creative Commons Licenses](https://www.madboa.com/images/cc-by-nc-sa.png)
 
-OpenSSL命令可以执行各种加解密操作。	
-这篇文档以实例的形式来说明如何使用OpenSSL。
+OpenSSL可以用来执行各种加解密操作。	
+本文以具体例子来说明如何使用OpenSSL。
 
 ## 目录
 * [介绍](#1.0)
@@ -62,18 +62,18 @@ OpenSSL命令可以执行各种加解密操作。
 
 <h2 id="1.0">介绍</h2>
 
-openssl命令可以执行各种加解密操作，你可以写脚本来调用它，也可以直接在命令行中使用。
-
-openssl官方的文档比较分散，所以这篇文档主旨是提供些具体的使用实例。我假设你已经安装了openssl，并且已在环境变量中配置。  
-再次说明，文档中都使用实例，不涉及密码学理论及相关概念。如果你不知道什么是MD5运算，这里是不会告诉你的，但如果你想知道怎么用openssl对一个文件进行MD5运算，那来这就对了。
+OpenSSL可以用来执行各种加解密操作，你可以写脚本来调用它，也可以直接在命令行中操作。  
+有关OpenSSL使用的文档比较分散，所以本文以具体问题来说明如何使用。  
+假设你已经安装并配置好了OpenSSL，此外再次说明，文档中都是应用实例，不涉及密码学理论及相关概念。  
+如果你不知道什么是哈希运算，这里是不会告诉你的，但如果你想知道怎么用OpenSSL对一个文件进行MD5运算，那来这就对了。
 
 <h3 id="1.1">查看OpenSSL是什么版本？</h3>
 
-使用version参数
+使用version选项
 
 	$ openssl version
 	OpenSSL 0.9.8zh 14 Jan 2016
-使用version -a参数可以得到更多的信息：
+跟上-a选项能得到更多的信息：
 	
 	$ openssl versoin -a
 	OpenSSL 0.9.8zh 14 Jan 2016
@@ -85,7 +85,7 @@ openssl官方的文档比较分散，所以这篇文档主旨是提供些具体�
 
 <h3 id="1.2">查看有哪些命令选项？</h3>
 
-有三组可执行的命令选项，但是没有一个满足我的需求。最好的办法是加上一个无效的选项(比如help或-h)，可以得到想要的结果
+内置的查看命令(比如openssl list-standard-commands)只能查出一组，有个技巧是加上一个无效的选项(比如help或-h)，就可以得到所有的结果。
 
 	$ openssl help
 	openssl:Error: 'help' is an invalid command.
@@ -419,7 +419,7 @@ PKCS#12格式的证书被许多程序使用，比如微软的IIS，这种证书�
 
 在编译OpenSSL库时需要制定OpenSSL的文件目录(--openssldir参数指定)，这个目录保存着认可的证书颁发机构信息。  
 默认的目录是/usr/local/ssl，很多操作系统会把它放到别处，比如/usr/share/ssl(Red Hat/Fedora)，/etc/ssl(Gentoo)，/usr/lib/ssl(Debian)，/System/Library/OpenSSL(Macintosh OS X)。  
-使用version选项加上-d参数查看目录在什么位置
+使用version选项加上-d查看目录在什么位置
 
 	openssl version -d
 这个目录下有个certs子目录，在certs里可能会有三种类型的文件：  
@@ -851,7 +851,7 @@ S/MIME表示安全的发送和接收MIME数据，尤其是自e-mail消息中。�
 
 <h2 id="14.0">延伸阅读</h2>
 
-建议从OpenSSL的指导文档开始：[asn1parse(1)](http://www.openssl.org/docs/apps/asn1parse.html), [ca(1)](http://www.openssl.org/docs/apps/ca.html), [ciphers(1)](http://www.openssl.org/docs/apps/ciphers.html), [config(5)](http://www.openssl.org/docs/apps/config.html), [crl(1)](http://www.openssl.org/docs/apps/crl.html), [crl2pkcs7(1)](http://www.openssl.org/docs/apps/crl2pkcs7.html), [dgst(1)](http://www.openssl.org/docs/apps/dgst.html), [dhparam(1)](http://www.openssl.org/docs/apps/dhparam.html), [dsa(1)](http://www.openssl.org/docs/apps/dsa.html), [dsaparam(1)](http://www.openssl.org/docs/apps/dsaparam.html), [ec(1)](http://www.openssl.org/docs/apps/ec.html), [ecparam(1)](http://www.openssl.org/docs/apps/ecparam.html), [enc(1)](http://www.openssl.org/docs/apps/enc.html), [errstr(1)](http://www.openssl.org/docs/apps/errstr.html), [gendsa(1)](http://www.openssl.org/docs/apps/gendsa.html), [genpkey(1)](http://www.openssl.org/docs/apps/genpkey.html), [genrsa(1)](http://www.openssl.org/docs/apps/genrsa.html), [nseq(1)](http://www.openssl.org/docs/apps/nseq.html), [ocsp(1)](http://www.openssl.org/docs/apps/ocsp.html), [openssl(1)](http://www.openssl.org/docs/apps/openssl.html), [passwd(1)](http://www.openssl.org/docs/apps/passwd.html), [pkcs12(1)](http://www.openssl.org/docs/apps/pkcs12.html), [pkcs7(1)](http://www.openssl.org/docs/apps/pkcs7.html), [pkcs8(1)](http://www.openssl.org/docs/apps/pkcs8.html), [pkey(1)](href="http://www.openssl.org/docs/apps/pkey.html"), [pkeyparam(1)](http://www.openssl.org/docs/apps/pkeyparam.html), [pkeyutl(1)](http://www.openssl.org/docs/apps/pkeyutl.html), [rand(1)](http://www.openssl.org/docs/apps/rand.html), [req(1)](http://www.openssl.org/docs/apps/req.html), [rsa(1)](http://www.openssl.org/docs/apps/rsa.html), [rsautl(1)](http://www.openssl.org/docs/apps/rsautl.html), [s_client(1)](http://www.openssl.org/docs/apps/s_client.html), [s_server(1)](http://www.openssl.org/docs/apps/s_server.html), [s_time(1)](http://www.openssl.org/docs/apps/s_time.html), [sess_id(1)](http://www.openssl.org/docs/apps/sess_id.html), [smime(1)](http://www.openssl.org/docs/apps/smime.html), [speed(1)](http://www.openssl.org/docs/apps/speed.html), [spkac(1)](http://www.openssl.org/docs/apps/spkac.html), [ts(1)](http://www.openssl.org/docs/apps/ts.html), [tsget(1)](http://www.openssl.org/docs/apps/tsget.html), [verify(1)](http://www.openssl.org/docs/apps/verify.html), [version(1)](http://www.openssl.org/docs/apps/version.html), [x509(1)](http://www.openssl.org/docs/apps/x509.html), [x509v3_config(5)](http://www.openssl.org/docs/apps/x509v3_config.html)。
+建议从OpenSSL的指导文档开始：[asn1parse(1)](http://www.openssl.org/docs/apps/asn1parse.html), [ca(1)](http://www.openssl.org/docs/apps/ca.html), [ciphers(1)](http://www.openssl.org/docs/apps/ciphers.html), [config(5)](http://www.openssl.org/docs/apps/config.html), [crl(1)](http://www.openssl.org/docs/apps/crl.html), [crl2pkcs7(1)](http://www.openssl.org/docs/apps/crl2pkcs7.html), [dgst(1)](http://www.openssl.org/docs/apps/dgst.html), [dhparam(1)](http://www.openssl.org/docs/apps/dhparam.html), [dsa(1)](http://www.openssl.org/docs/apps/dsa.html), [dsaparam(1)](http://www.openssl.org/docs/apps/dsaparam.html), [ec(1)](http://www.openssl.org/docs/apps/ec.html), [ecparam(1)](http://www.openssl.org/docs/apps/ecparam.html), [enc(1)](http://www.openssl.org/docs/apps/enc.html), [errstr(1)](http://www.openssl.org/docs/apps/errstr.html), [gendsa(1)](http://www.openssl.org/docs/apps/gendsa.html), [genpkey(1)](http://www.openssl.org/docs/apps/genpkey.html), [genrsa(1)](http://www.openssl.org/docs/apps/genrsa.html), [nseq(1)](http://www.openssl.org/docs/apps/nseq.html), [ocsp(1)](http://www.openssl.org/docs/apps/ocsp.html), [openssl(1)](http://www.openssl.org/docs/apps/openssl.html), [passwd(1)](http://www.openssl.org/docs/apps/passwd.html), [pkcs12(1)](http://www.openssl.org/docs/apps/pkcs12.html), [pkcs7(1)](http://www.openssl.org/docs/apps/pkcs7.html), [pkcs8(1)](http://www.openssl.org/docs/apps/pkcs8.html), [pkey(1)](http://www.openssl.org/docs/apps/pkey.html), [pkeyparam(1)](http://www.openssl.org/docs/apps/pkeyparam.html), [pkeyutl(1)](http://www.openssl.org/docs/apps/pkeyutl.html), [rand(1)](http://www.openssl.org/docs/apps/rand.html), [req(1)](http://www.openssl.org/docs/apps/req.html), [rsa(1)](http://www.openssl.org/docs/apps/rsa.html), [rsautl(1)](http://www.openssl.org/docs/apps/rsautl.html), [s_client(1)](http://www.openssl.org/docs/apps/s_client.html), [s_server(1)](http://www.openssl.org/docs/apps/s_server.html), [s_time(1)](http://www.openssl.org/docs/apps/s_time.html), [sess_id(1)](http://www.openssl.org/docs/apps/sess_id.html), [smime(1)](http://www.openssl.org/docs/apps/smime.html), [speed(1)](http://www.openssl.org/docs/apps/speed.html), [spkac(1)](http://www.openssl.org/docs/apps/spkac.html), [ts(1)](http://www.openssl.org/docs/apps/ts.html), [tsget(1)](http://www.openssl.org/docs/apps/tsget.html), [verify(1)](http://www.openssl.org/docs/apps/verify.html), [version(1)](http://www.openssl.org/docs/apps/version.html), [x509(1)](http://www.openssl.org/docs/apps/x509.html), [x509v3_config(5)](http://www.openssl.org/docs/apps/x509v3_config.html)。
 
 <h2 id="15.0">欢迎评论</h2>
 
