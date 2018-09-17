@@ -75,7 +75,7 @@ OpenSSL可以用来执行各种加解密操作，你可以写脚本来调用它�
 	OpenSSL 0.9.8zh 14 Jan 2016
 跟上-a选项能得到更多的信息：
 	
-	$ openssl versoin -a
+	$ openssl version -a
 	OpenSSL 0.9.8zh 14 Jan 2016
 	built on: May 15 2016
 	platform: darwin64-x86_64-llvm
